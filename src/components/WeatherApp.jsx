@@ -54,7 +54,7 @@ const WeatherApp = () => {
             })
         }
         fetchData();
-    }, []);
+    });
 
 const search = async () => {
     const element = document.getElementById("searchInput")                            
