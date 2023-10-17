@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useOnKeyPress } from '../hooks/useOnKeyPress'
 
 import search_icon from '../assets/search.png'
 import clear_icon from '../assets/clear.png'
@@ -99,14 +100,8 @@ const search = async () => {
     }
 }
 
+    useOnKeyPress(search, 'Enter');
 
-// const input = document.getElementById('searchInput')
-//     input.addEventListener('keyup', (e) => {
-//         if(e.keycode === 13 || e.key === "Enter"){
-//            search();
-//         }
-//     })
-    
   return (     
 
     <div className=' max-w-lg h-auto m-auto mt-20 rounded-xl bg-gradient-to-r from-[#130754] to-[#3b2f80] '>
@@ -116,7 +111,7 @@ const search = async () => {
                 type="text" 
                 className=' flex w-80 h-12 bg-white border-none outline-none rounded-[40px] pl-10 text-gray-800 text-lg font-normal' 
                 placeholder='Search' 
-                id='searchInput'
+                id='searchInput'           
             />
             <div 
                 className=" flex justify-center items-center w-12 h-12 bg-cyan-200 rounded-[40px] cursor-pointer"                 
