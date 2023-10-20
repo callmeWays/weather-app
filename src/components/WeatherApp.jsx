@@ -53,7 +53,7 @@ const WeatherApp = () => {
                 }
             })
         }                
-        return () => fetchData();
+        fetchData();
     }, [url]);
 
 const search = async () => {
