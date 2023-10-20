@@ -22,7 +22,7 @@ const WeatherApp = () => {
     const [windSpeed, setWindSpeed] = useState("");
 
     useEffect(() => {
-        const fetchData = async () => {
+        var fetchData = async () => {
             const result = await fetch(url);
             result.json().then(json => {
                 setTemp(Math.floor(json.main.temp))
@@ -52,9 +52,10 @@ const WeatherApp = () => {
                         setWicon(clear_icon);
                 }
             })
-        }                
+        }             
         fetchData();
-    }, [url]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
 const search = async () => {
     const element = document.getElementById("searchInput")                            
@@ -70,7 +71,6 @@ const search = async () => {
     const temp = document.getElementById("weatherTemp");
     const location = document.getElementById("weatherLocation");
 
-    
     humidity.innerHTML = data.main.humidity + "%";        
     wind.innerHTML = Math.round(data.wind.speed) + " km/h";
     temp.innerHTML = Math.round(data.main.temp) + "°c";
