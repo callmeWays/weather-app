@@ -13,7 +13,7 @@ import humidity_icon from '../assets/humidity.png'
 const WeatherApp = () => {
 
     let api_key = "4d9491ba35d7c665479c4179cfbf1b18"
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=Vatican&units=metric&appid=${api_key}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=Manila&units=metric&appid=${api_key}`;
 
     const [wicon, setWicon] = useState(clear_icon);
     const [temp, setTemp] = useState(0);
@@ -28,7 +28,7 @@ const WeatherApp = () => {
                 setTemp(Math.floor(json.main.temp))
                 setLocation(json.name)
                 setHumidity(json.main.humidity)
-                setWindSpeed(Math.floor(json.wind.speed))
+                setWindSpeed(Math.round(json.wind.speed))
                 switch(json.weather[0].icon){
                     case "01d" || "01n":
                         setWicon(clear_icon);
@@ -52,9 +52,9 @@ const WeatherApp = () => {
                         setWicon(clear_icon);
                 }
             })
-        }
+        }        
         fetchData();
-    });
+    }, [window]);
 
 const search = async () => {
     const element = document.getElementById("searchInput")                            
@@ -72,8 +72,8 @@ const search = async () => {
 
     
     humidity.innerHTML = data.main.humidity + "%";        
-    wind.innerHTML = Math.floor(data.wind.speed) + " km/h";
-    temp.innerHTML = Math.floor(data.main.temp) + "°c";
+    wind.innerHTML = Math.round(data.wind.speed) + " km/h";
+    temp.innerHTML = Math.round(data.main.temp) + "°c";
     location.innerHTML = data.name;
 
     switch(data.weather[0].icon){
