@@ -52,9 +52,9 @@ const WeatherApp = () => {
                         setWicon(clear_icon);
                 }
             })
-        }        
-        fetchData();
-    });
+        }                
+        return () => fetchData();
+    }, [url]);
 
 const search = async () => {
     const element = document.getElementById("searchInput")                            
